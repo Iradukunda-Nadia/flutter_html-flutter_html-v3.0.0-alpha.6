@@ -914,7 +914,7 @@ class HtmlParser extends StatelessWidget {
                 FontSize(remFontSize * child.style.fontSize!.value);
             break;
           case Unit.px:
-            child.style.fontSize = child.style.fontSize!.value;
+            child.style.fontSize = FontSize(child.style.fontSize!.value);
             break;
           case Unit.auto:
             //Ignore
