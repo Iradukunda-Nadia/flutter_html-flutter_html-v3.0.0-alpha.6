@@ -20,7 +20,7 @@ class FontSize extends LengthOrPercent {
   static final xLarge = FontSize(17.0);
   static final xxLarge = FontSize(17.5);
   static final smaller = FontSize(14.0);
-  static final larger = FontSize(18);
+  static final larger = FontSize(18.0);
 
   static FontSize? inherit(FontSize? parent, FontSize? child) {
     if (child != null && parent != null) {
