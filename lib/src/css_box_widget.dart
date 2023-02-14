@@ -92,7 +92,7 @@ class CSSBoxWidget extends StatelessWidget {
     }
 
     return RichText(
-      TextSpan(
+        text: TextSpan(
         style: style.generateTextStyle(),
         children: children,
       ),
@@ -102,6 +102,7 @@ class CSSBoxWidget extends StatelessWidget {
       maxLines: style.maxLines,
       overflow: style.textOverflow,
     );
+
   }
 
   static Widget _generateSelectableWidgetChild(
