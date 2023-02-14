@@ -91,7 +91,7 @@ class CSSBoxWidget extends StatelessWidget {
       return Container();
     }
 
-    return Text.rich(
+    return RichText(
       TextSpan(
         style: style.generateTextStyle(),
         children: children,
