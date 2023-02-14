@@ -697,8 +697,9 @@ extension Normalize on Dimension {
 
 double _calculateEmValue(Style style, BuildContext buildContext) {
   //TODO is there a better value for this?
-  print(MediaQuery.textScaleFactorOf(buildContext));
-  return (style.fontSize?.emValue ?? 16) * MediaQuery.textScaleFactorOf(buildContext);
+  return (style.fontSize?.emValue ?? 16) *
+      MediaQuery.textScaleFactorOf(buildContext) *
+      MediaQuery.of(buildContext).devicePixelRatio;
 }
 
 class CSSBoxParentData extends ContainerBoxParentData<RenderBox> {}

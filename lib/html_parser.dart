@@ -586,7 +586,7 @@ class HtmlParser extends StatelessWidget {
         case ListStyleType.NONE:
           break;
         case ListStyleType.CIRCLE:
-          marker = '○';
+          marker = '◦';
           break;
         case ListStyleType.SQUARE:
           marker = '■';
@@ -914,8 +914,6 @@ class HtmlParser extends StatelessWidget {
                 FontSize(remFontSize * child.style.fontSize!.value);
             break;
           case Unit.px:
-            child.style.fontSize = FontSize(child.style.fontSize!.value);
-            break;
           case Unit.auto:
             //Ignore
             break;
