@@ -12,15 +12,15 @@ class FontSize extends LengthOrPercent {
   //
   // Negative values are computed during parsing to be a percentage of
   // the parent style's font size.
-  static final xxSmall = FontSize(10.0);
-  static final xSmall = FontSize(12.0);
-  static final small = FontSize(14.0);
+  static final xxSmall = FontSize(14.5);
+  static final xSmall = FontSize(15.0);
+  static final small = FontSize(15.5);
   static final medium = FontSize(16.0);
-  static final large = FontSize(18.0);
-  static final xLarge = FontSize(20.0);
-  static final xxLarge = FontSize(22.0);
-  static final smaller = FontSize(8.0);
-  static final larger = FontSize(24);
+  static final large = FontSize(16.5);
+  static final xLarge = FontSize(17.0);
+  static final xxLarge = FontSize(17.5);
+  static final smaller = FontSize(14.0);
+  static final larger = FontSize(18);
 
   static FontSize? inherit(FontSize? parent, FontSize? child) {
     if (child != null && parent != null) {
