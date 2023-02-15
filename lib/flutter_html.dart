@@ -166,16 +166,6 @@ class _HtmlState extends State<Html> {
         : widget.documentElement!;
   }
 
-  @override
-  void didUpdateWidget(Html oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if ((widget.data != null && oldWidget.data != widget.data) ||
-        oldWidget.documentElement != widget.documentElement) {
-      documentElement = widget.data != null
-          ? HtmlParser.parseHTML(widget.data!)
-          : widget.documentElement!;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
