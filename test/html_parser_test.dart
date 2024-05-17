@@ -124,7 +124,6 @@ void testNewParser(BuildContext context) {
       style: {},
       customRenders: generateDefaultRenders(),
       tagsList: Html.tags,
-      selectionControls: null,
       scrollPhysics: null,
     ),
   );

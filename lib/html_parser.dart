@@ -39,7 +39,6 @@ class HtmlParser extends StatelessWidget {
   final List<String> tagsList;
   final OnTap? internalOnAnchorTap;
   final Html? root;
-  final TextSelectionControls? selectionControls;
   final ScrollPhysics? scrollPhysics;
 
   final Map<String, Size> cachedImageSizes = {};
@@ -57,7 +56,6 @@ class HtmlParser extends StatelessWidget {
     required this.customRenders,
     required this.tagsList,
     this.root,
-    this.selectionControls,
     this.scrollPhysics,
   })  : this.internalOnAnchorTap = onAnchorTap != null
             ? onAnchorTap
