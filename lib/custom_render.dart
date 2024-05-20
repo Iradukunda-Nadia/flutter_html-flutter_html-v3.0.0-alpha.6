@@ -112,22 +112,6 @@ class SelectableCustomRender extends CustomRender {
 
 CustomRender blockElementRender({Style? style, List<InlineSpan>? children}) =>
     CustomRender.inlineSpan(inlineSpan: (context, buildChildren) {
-      if (context.parser.selectable) {
-        return TextSpan(
-          style: context.style.generateTextStyle(),
-          children: (children as List<TextSpan>?) ??
-              context.tree.children
-                  .expandIndexed((i, childTree) => [
-                        context.parser.parseTree(context, childTree),
-                        if (i != context.tree.children.length - 1 &&
-                            childTree.style.display == Display.BLOCK &&
-                            childTree.element?.localName != "html" &&
-                            childTree.element?.localName != "body")
-                          TextSpan(text: "\n"),
-                      ])
-                  .toList(),
-        );
-      }
       return WidgetSpan(
         alignment: PlaceholderAlignment.baseline,
         baseline: TextBaseline.alphabetic,
