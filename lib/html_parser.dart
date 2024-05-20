@@ -33,12 +33,14 @@ class HtmlParser extends StatelessWidget {
   final OnCssParseError? onCssParseError;
   final ImageErrorListener? onImageError;
   final bool shrinkWrap;
+  final bool selectable;
 
   final Map<String, Style> style;
   final Map<CustomRenderMatcher, CustomRender> customRenders;
   final List<String> tagsList;
   final OnTap? internalOnAnchorTap;
   final Html? root;
+  final TextSelectionControls? selectionControls;
   final ScrollPhysics? scrollPhysics;
 
   final Map<String, Size> cachedImageSizes = {};
@@ -52,10 +54,12 @@ class HtmlParser extends StatelessWidget {
     required this.onCssParseError,
     required this.onImageError,
     required this.shrinkWrap,
+    required this.selectable,
     required this.style,
     required this.customRenders,
     required this.tagsList,
     this.root,
+    this.selectionControls,
     this.scrollPhysics,
   })  : this.internalOnAnchorTap = onAnchorTap != null
             ? onAnchorTap
@@ -100,7 +104,9 @@ class HtmlParser extends StatelessWidget {
     return CSSBoxWidget.withInlineSpanChildren(
       style: processedTree.style,
       children: [parsedTree],
+      selectable: selectable,
       scrollPhysics: scrollPhysics,
+      selectionControls: selectionControls,
       shrinkWrap: shrinkWrap,
     );
   }
@@ -338,6 +344,20 @@ class HtmlParser extends StatelessWidget {
       if (entry.call(newContext)) {
         final buildChildren = () =>
             tree.children.map((tree) => parseTree(newContext, tree)).toList();
+        if (newContext.parser.selectable &&
+            customRenders[entry] is SelectableCustomRender) {
+          final selectableBuildChildren = () => tree.children
+              .map((tree) => parseTree(newContext, tree) as TextSpan)
+              .toList();
+          return (customRenders[entry] as SelectableCustomRender)
+              .textSpan
+              .call(newContext, selectableBuildChildren);
+        }
+        if (newContext.parser.selectable) {
+          return customRenders[entry]!
+              .inlineSpan!
+              .call(newContext, buildChildren) as TextSpan;
+        }
         if (customRenders[entry]?.inlineSpan != null) {
           return customRenders[entry]!
               .inlineSpan!

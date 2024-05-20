@@ -22,8 +22,17 @@ class CSSBoxWidget extends StatelessWidget {
     this.textDirection,
     this.childIsReplaced = false,
     this.shrinkWrap = false,
+    bool selectable = false,
+    TextSelectionControls? selectionControls,
     ScrollPhysics? scrollPhysics,
-  })  : this.child = _generateWidgetChild(children, style),
+  })  : this.child = selectable
+            ? _generateSelectableWidgetChild(
+                children,
+                style,
+                selectionControls,
+                scrollPhysics,
+              )
+            : _generateWidgetChild(children, style),
         super(key: key);
 
   /// An optional anchor key to use in finding this box
@@ -93,6 +102,30 @@ class CSSBoxWidget extends StatelessWidget {
       overflow: style.textOverflow ?? TextOverflow.clip,
     );
 
+  }
+
+  static Widget _generateSelectableWidgetChild(
+    List<InlineSpan> children,
+    Style style,
+    TextSelectionControls? selectionControls,
+    ScrollPhysics? scrollPhysics,
+  ) {
+    if (children.isEmpty) {
+      return Container();
+    }
+
+    return SelectableText.rich(
+      TextSpan(
+        style: style.generateTextStyle(),
+        children: children,
+      ),
+      style: style.generateTextStyle(),
+      textAlign: style.textAlign,
+      textDirection: style.direction,
+      maxLines: style.maxLines,
+      selectionControls: selectionControls,
+      scrollPhysics: scrollPhysics,
+    );
   }
 
   /// Whether or not the content-box should expand its width to fill the
