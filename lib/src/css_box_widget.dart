@@ -25,14 +25,7 @@ class CSSBoxWidget extends StatelessWidget {
     bool selectable = false,
     TextSelectionControls? selectionControls,
     ScrollPhysics? scrollPhysics,
-  })  : this.child = selectable
-            ? _generateSelectableWidgetChild(
-                children,
-                style,
-                selectionControls,
-                scrollPhysics,
-              )
-            : _generateWidgetChild(children, style),
+  })  : this.child = _generateWidgetChild(children, style),
         super(key: key);
 
   /// An optional anchor key to use in finding this box

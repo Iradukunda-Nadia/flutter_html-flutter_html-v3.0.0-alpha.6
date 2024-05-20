@@ -188,7 +188,7 @@ class _HtmlState extends State<Html> {
       onCssParseError: widget.onCssParseError,
       onImageError: widget.onImageError,
       shrinkWrap: widget.shrinkWrap,
-      selectable: false,
+      selectable: true,
       style: widget.style,
       customRenders: {}
         ..addAll(widget.customRenders)
