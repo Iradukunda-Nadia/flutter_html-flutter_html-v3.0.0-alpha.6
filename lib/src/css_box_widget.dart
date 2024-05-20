@@ -84,17 +84,15 @@ class CSSBoxWidget extends StatelessWidget {
       return Container();
     }
 
-    return SelectionArea(
-      child: RichText(
-        text: TextSpan(
-          style: style.generateTextStyle(),
-          children: children,
-        ),
-        textAlign: style.textAlign ?? TextAlign.start,
-        textDirection: style.direction,
-        maxLines: style.maxLines,
-        overflow: style.textOverflow ?? TextOverflow.clip,
+    return Text.rich(
+      TextSpan(
+        style: style.generateTextStyle(),
+        children: children,
       ),
+      textAlign: style.textAlign ?? TextAlign.start,
+      textDirection: style.direction,
+      maxLines: style.maxLines,
+      overflow: style.textOverflow ?? TextOverflow.clip,
     );
 
   }
