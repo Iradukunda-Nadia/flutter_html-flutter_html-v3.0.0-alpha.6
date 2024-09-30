@@ -89,6 +89,7 @@ class CSSBoxWidget extends StatelessWidget {
         style: style.generateTextStyle(),
         children: children,
       ),
+      textScaleFactor: 1.0,
       textAlign: style.textAlign ?? TextAlign.start,
       textDirection: style.direction,
       maxLines: style.maxLines,
