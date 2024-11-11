@@ -252,12 +252,12 @@ StyledElement parseStyledElement(
       break;
     case "hr":
       styledElement.style = Style(
-        margin: Margins(
+        /*margin: Margins(
           top: Margin(0.5, Unit.em),
           bottom: Margin(0.5, Unit.em),
           left: Margin.auto(),
           right: Margin.auto(),
-        ),
+        ),*/
         border: Border.all(),
         display: Display.BLOCK,
       );
